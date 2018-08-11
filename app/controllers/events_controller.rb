@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event= Event.find(params[:id])
   end
 
   # GET /events/new
@@ -35,6 +36,8 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+
+    redirect_to @event
   end
 
   # PATCH/PUT /events/1
