@@ -1,3 +1,5 @@
+# UsersController to show individual users by id
+
 class UsersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:show]

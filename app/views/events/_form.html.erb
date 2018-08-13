@@ -17,19 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :date_start %>
-    <%= form.date_select(:date_start, {prompt: {day: 'Select day', month: 'Select month', Year: 'Select year'}}, {required: true}) %>
-    
+    <%= form.label :event_date %>
+    <%= form.date_field :date? %>
   </div>
 
   <div class="field">
     <%= form.label :time_from %>
-    <%= form.time_select(:time_from, {ampm:true}, {required: true}) %>
+    <%= form.time_field :time? %>
   </div>
 
   <div class="field">
     <%= form.label :time_to %>
-    <%= form.time_select(:time_to, {ampm:true}, {required: true}) %>
+    <%= form.time_field :time? %>
   </div>
 
   <div class="field">
@@ -38,8 +37,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :host_name %>
-    <%= form.text_field :host_name, {required: true} %>
+    <%# <%= form.label :host_name %> 
+    <%= form.hidden_field :host_name, :value => @user, required: true %>
   </div>
 
   <div class="field">

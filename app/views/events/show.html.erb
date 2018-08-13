@@ -1,4 +1,23 @@
-<%= button_to 'Join', , method: => :post %>
+<% @change = true %>
+
+<% if @change == true %>
+  <%= form_with url: join_path(@event.id), method: :post do |f| %>
+    <%= f.submit "Join Event" %>
+  <% end %> 
+  <% @change = false %> 
+
+<% else %>
+  <%= form_with url: leave_path(@event.id), method: :post do |f| %>
+    <%= f.submit "Leave Event" %>
+  <% end %>  
+  <% @change = true %>
+
+<% end %><br/>
+
+<%# /banana/:colour/:size banana_path
+banana_path(colour: foo, size: bar) => params[:colour], params[:size] 
+/events/:id
+join_path(@event.id) => Event.find(params[:id]) %>
 
 <p>
   <strong>Title:</strong>
@@ -42,3 +61,11 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+<br/><br/>
+
+<h3>Attendees:</h3>
+<ul>
+  <% @event.users.each do |u| %>
+    <li><%= u.first_name %> <%= u.last_name %></li>
+  <% end %>
+</ul>

@@ -2,32 +2,40 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
-  # GET /events.json
   def index
     @events = Event.all
   end
 
   # GET /events/1
-  # GET /events/1.json
   def show
-    @event= Event.find(params[:id])    
+    @event= Event.find(params[:id])
   end
   
   def join
-    @event.users << current_user 
-  end  
+    @event = Event.find(params[:id])
+    @event.users << current_user
+    @change = false
+  end
 
+  def leave
+    @event = Event.find(params[:id])
+    @event.users.delete(@event)
+    @change = true
+  end
+ 
   # GET /events/new
   def new
     @event = Event.new
+    @user = User.find(current_user.id).first_name
   end
 
   # GET /events/1/edit
   def edit
+    @event = Event.find(params[:id])
+    @user = User.find(current_user.id).first_name
   end
 
   # POST /events
-  # POST /events.json
   def create
     @event = Event.new(event_params)
 
@@ -40,12 +48,11 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
-
-    redirect_to @event
+    
+    #redirect_to events_path
   end
 
   # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -55,17 +62,20 @@ class EventsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+
+      redirect_to @event
     end
   end
 
   # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+
+    redirect_to events_path
   end
 
   private
