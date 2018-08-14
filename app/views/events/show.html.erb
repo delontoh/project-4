@@ -1,18 +1,18 @@
-<% @change = true %>
 
-<% if @change == true %>
+<% if @event.users.find_by(id: current_user.id) != nil %>
+  <%= form_with url: leave_path(@event.id), method: :post do |f| %>
+    <%= f.submit "Leave Event" %>
+    
+  <%#<% leave_path(@event.id) %>
+  <% end %>  
+
+<% else %>
   <%= form_with url: join_path(@event.id), method: :post do |f| %>
     <%= f.submit "Join Event" %>
   <% end %> 
-  <% @change = false %> 
-
-<% else %>
-  <%= form_with url: leave_path(@event.id), method: :post do |f| %>
-    <%= f.submit "Leave Event" %>
-  <% end %>  
-  <% @change = true %>
 
 <% end %><br/>
+
 
 <%# /banana/:colour/:size banana_path
 banana_path(colour: foo, size: bar) => params[:colour], params[:size] 
@@ -25,7 +25,7 @@ join_path(@event.id) => Event.find(params[:id]) %>
 </p>
 
 <p>
-  <strong>Date start:</strong>
+  <strong>Event Date:</strong>
   <%= @event.date_start %>
 </p>
 
@@ -59,8 +59,15 @@ join_path(@event.id) => Event.find(params[:id]) %>
   <%= @event.content %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%# <% if @event.users.find_by(id: current_user.id).first_name == @event.host_name %> 
+<% if @event.users.find_by(id: current_user.id) == current_user %>
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+    <%= link_to 'Remove Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <%= link_to 'Back', events_path %>
+<% else %>
+    <%= link_to 'Back', events_path %>
+<% end %>
+
 <br/><br/>
 
 <h3>Attendees:</h3>

@@ -17,18 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :event_date %>
-    <%= form.date_field :date? %>
+    <%= form.label :date_start, 'Event Date' %>
+    <%= form.date_select :date_start %>
   </div>
 
   <div class="field">
     <%= form.label :time_from %>
-    <%= form.time_field :time? %>
+    <%= form.time_select :time_from %>
   </div>
 
   <div class="field">
     <%= form.label :time_to %>
-    <%= form.time_field :time? %>
+    <%= form.time_select :time_to %>
   </div>
 
   <div class="field">

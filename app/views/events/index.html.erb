@@ -5,7 +5,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Date start</th>
+      <th>Event Date</th>
       <th>Time from</th>
       <th>Time to</th>
       <th>Location</th>
@@ -28,8 +28,8 @@
         <td><%= event.host_contact %></td>
         <td><%= event.content %></td>
         <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Delete Event', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# <td><%= link_to 'Edit', edit_event_path(event) %><%#</td> %>
+        <%#<td><%= link_to 'Remove Event', event, method: :delete, data: { confirm: 'Are you sure?' } %>
       </tr>
     <% end %>
   </tbody>

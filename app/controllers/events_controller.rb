@@ -13,14 +13,14 @@ class EventsController < ApplicationController
   
   def join
     @event = Event.find(params[:id])
-    @event.users << current_user
-    @change = false
+    @event.users << current_user  # add current_user to attendee list
+    redirect_to @event
   end
 
   def leave
     @event = Event.find(params[:id])
-    @event.users.delete(@event)
-    @change = true
+    @event.users.delete(current_user.id)   # remove current_user from attendee list
+    redirect_to @event
   end
  
   # GET /events/new
@@ -62,8 +62,6 @@ class EventsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
-
-      redirect_to @event
     end
   end
 
@@ -71,11 +69,9 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to events_path, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
-
-    redirect_to events_path
   end
 
   private
