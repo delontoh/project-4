@@ -1,0 +1,29 @@
+
+.homepage {
+    background-image: asset-url("fullstack.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.page-footer {
+    background: rgba(0,0,0,0);
+};
+
+.footertext {
+    color: white;
+    font-weight: bold;
+    margin-top: 50px;
+};
+
+.jumbotron {
+    background: rgba(0,0,0,0);
+    color: rgba(188, 11, 11, 1);
+    font-weight: bold;
+};
+
+.lead {
+    color: rgba(188, 11, 11, 1);
+    font-weight: bold;
+}
+

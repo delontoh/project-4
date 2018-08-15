@@ -1,3 +1,6 @@
+<body>
+<div class= "container">
+
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -11,47 +14,76 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, {required: true} %>
+  
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :title, 'Event Name' %></span>
+      <%= form.text_field :title, class: "form-control", placeholder: 'Event Name', required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :date_start, 'Event Date' %>
-    <%= form.date_select :date_start %>
+
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :date_start, 'Event Date' %></span>
+      <%= form.date_select :date_start, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :time_from %>
-    <%= form.time_select :time_from %>
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :time_from %></span>
+      <%= form.time_select :time_from, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :time_to %>
-    <%= form.time_select :time_to %>
+   <div class="input-group mb-3">
+    <div class="input-group-prepend time-input">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :time_to %></span>
+      <%= form.time_select :time_to , class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, {required: true} %>
+   <div class="input-group mb-3">
+    <div class="input-group-prepend time-input">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :location %></span>
+      <%= form.text_field :location, class: "form-control", placeholder: 'Enter Location', required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%# <%= form.label :host_name %> 
-    <%= form.hidden_field :host_name, :value => @user, required: true %>
+   <div class="field">
+      <%= form.hidden_field :host_id, :value => current_user.id, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :host_contact %>
-    <%= form.text_field :host_contact, {required: true} %>
+   <div class="field">
+      <%= form.hidden_field :host_name, :value => @user, required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, {required: true} %>
+   <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :host_contact %></span>
+      <%= form.text_field :host_contact, class: "form-control", placeholder: 'Enter Contact Detail', required: true %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+   <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><%= form.label :content, "Event Info" %></span>
+      <%= form.text_area :content, class: "form-control", required: true %>
+    </div>
+  </div><br/>
+
+  <div class="actions btn btn-outline-success">
+    <%= form.submit 'Create Event' %>
   </div>
+
+  <button type="button" class="btn btn-outline-danger">
+    <%= link_to 'Back', events_path, class:'backlink' %>
+  </button>
+
 <% end %>
+
+</div>
+</body>
+
+

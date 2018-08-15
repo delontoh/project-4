@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = Event.all
+    @user = User.find(current_user.id)
   end
 
   # GET /events/1
@@ -82,6 +83,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :date_start, :time_from, :time_to, :location, :host_name, :host_contact, :content)
+      params.require(:event).permit(:title, :date_start, :time_from, :time_to, :location, :host_id, :host_name, :host_contact, :content)
     end
 end

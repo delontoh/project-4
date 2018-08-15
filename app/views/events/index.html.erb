@@ -1,33 +1,26 @@
 
-<h1>Events</h1>
+<h1>Planned Events</h1><br/>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Event Date</th>
-      <th>Time from</th>
-      <th>Time to</th>
-      <th>Location</th>
-      <th>Host name</th>
-      <th>Host contact</th>
-      <th>Content</th>
-      <th colspan="3"></th>
+      <th scope="col">Event Date</th>
+      <th scope="col">Title</th>
+      <th scope="col">Time from</th>
+      <th scope="col">Time to</th>
     </tr>
   </thead>
 
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.title %></td>
+        
         <td><%= event.date_start %></td>
+        <td><%= event.title %></td>
         <td><%= event.time_from %></td>
         <td><%= event.time_to %></td>
-        <td><%= event.location %></td>
-        <td><%= event.host_name %></td>
-        <td><%= event.host_contact %></td>
-        <td><%= event.content %></td>
-        <td><%= link_to 'Show', event %></td>
+
+        <td><%= link_to 'More Details', event, class: 'eventdetail' %></td>
         <%# <td><%= link_to 'Edit', edit_event_path(event) %><%#</td> %>
         <%#<td><%= link_to 'Remove Event', event, method: :delete, data: { confirm: 'Are you sure?' } %>
       </tr>
@@ -37,4 +30,14 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<button type="button" class="btn btn-outline-success">
+  <%= link_to 'New Event', new_event_path, class: 'newevent' %>
+</button>
+
+<button type="button" class="btn btn-outline-danger">
+    <%= link_to 'Back', profile_user_path(@user), class:'backlink' %>
+</button>
+
+
+
+

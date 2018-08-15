@@ -1,3 +1,74 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    background-image: asset-url("host_event.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    text-align: center;
+}
+
+body > h1 {
+    margin: 8px;
+    color: rgba(234, 84, 84, 1);
+    text-align: center;
+}
+
+.btn > input {
+    background-color: transparent;
+    border: none;
+    color: green;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-left: 400px;
+}
+
+.input-group .btn {
+    text-align:center;
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 500px;
+        
+}
+
+.input-group-text {
+    line-height: 1.0px;
+    background-color: rgba(234, 84, 84, 1);
+}
+
+.form-control {
+    background-color: transparent;
+    border-radius: 2px;
+    height: 2.25rem;
+}
+
+.backlink {
+    color: red;
+    font-weight: bold;
+}
+
+th {
+    color: rgba(234, 84, 84, 1);
+}
+
+.eventdetail {
+    text-decoration: none;
+    color: white;
+}
+
+.newevent {
+    background-color: transparent;
+    border: none;
+    color: green;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+}
+

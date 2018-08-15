@@ -1,0 +1,40 @@
+
+<div class="homepage">
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: none;">
+  <a class="navbar-brand" href="#">WDN</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav justify-content-end">
+      <li class="nav-item">
+        <%= link_to 'New Account', new_user_registration_path, :class => "nav-link navbar-item is-active" %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Login', new_user_session_path, :class => "nav-link navbar-item is-active" %>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br/><br/>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-1">Welcome to WebDev.Network!</h1>
+    <p class="lead">A community for developers</p>
+  </div>
+</div><br/>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+    <div class="footer-copyright text-center py-3">
+      <p class="footertext">Made with <span class="footerspan" style="color:red;"> &hearts;</span> by Delon Toh</p>
+    </div>
+</footer>
+
+</div>

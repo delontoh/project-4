@@ -1,23 +1,19 @@
 
-<% if @event.users.find_by(id: current_user.id) != nil %>
-  <%= form_with url: leave_path(@event.id), method: :post do |f| %>
-    <%= f.submit "Leave Event" %>
-    
-  <%#<% leave_path(@event.id) %>
-  <% end %>  
+<% if @event.host_id != current_user.id %> 
+
+  <% if @event.users.find_by(id: current_user.id) != nil %>
+    <%= form_with url: leave_path(@event.id), method: :post do |f| %>
+      <%= f.submit "Leave Event" %>
+    <% end %>  
+
+  <% else %>
+    <%= form_with url: join_path(@event.id), method: :post do |f| %>
+      <%= f.submit "Join Event" %>
+    <% end %> 
+  <% end %>
 
 <% else %>
-  <%= form_with url: join_path(@event.id), method: :post do |f| %>
-    <%= f.submit "Join Event" %>
-  <% end %> 
-
-<% end %><br/>
-
-
-<%# /banana/:colour/:size banana_path
-banana_path(colour: foo, size: bar) => params[:colour], params[:size] 
-/events/:id
-join_path(@event.id) => Event.find(params[:id]) %>
+<% end %>
 
 <p>
   <strong>Title:</strong>
@@ -60,7 +56,7 @@ join_path(@event.id) => Event.find(params[:id]) %>
 </p>
 
 <%# <% if @event.users.find_by(id: current_user.id).first_name == @event.host_name %> 
-<% if @event.users.find_by(id: current_user.id) == current_user %>
+<% if @event.host_id == current_user.id %>
     <%= link_to 'Edit', edit_event_path(@event) %> |
     <%= link_to 'Remove Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
     <%= link_to 'Back', events_path %>
@@ -74,5 +70,6 @@ join_path(@event.id) => Event.find(params[:id]) %>
 <ul>
   <% @event.users.each do |u| %>
     <li><%= u.first_name %> <%= u.last_name %></li>
+    <li><%= link_to 'Show', profile_user_path(current_user.id) %></li>
   <% end %>
 </ul>
