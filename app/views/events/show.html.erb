@@ -3,22 +3,27 @@
   <h2>
     <strong><%= @event.title %></strong>
   </h2>
-  <% if @event.host_id != current_user.id %> 
 
-    <% if @event.users.find_by(id: current_user.id) != nil %>
-      <%= form_with url: leave_path(@event.id), method: :post do |f| %>
-        <%= f.submit "Leave Event" %>
-      <% end %>  
+  <div class="join-button">
+    <% if @event.host_id != current_user.id %> 
+      <% if @event.users.find_by(id: current_user.id) != nil %>
+        <%= form_with url: leave_path(@event.id), method: :post do |f| %>
+          <div class="actions btn btn-outline-success">
+          <%= f.submit "Leave Event" %>
+          </div>
+        <% end %>  
 
+      <% else %>
+        <%= form_with url: join_path(@event.id), method: :post do |f| %>
+          <div class="actions btn btn-outline-success">
+          <%= f.submit "Join Event" %>
+          </div>
+        <% end %> 
+      <% end %>
     <% else %>
-      <%= form_with url: join_path(@event.id), method: :post do |f| %>
-        <%= f.submit "Join Event" %>
-      <% end %> 
     <% end %>
-
-  <% else %>
-  <% end %>
-</div><br/>
+  </div>
+</div><br/><br/><br/>
 
 <div class= "date-time-container container-fluid">
   <div class= 'row'>
@@ -45,7 +50,7 @@
 
 <div class= "content-container container-fluid">
   <div class= "row">
-    <div class= "col-9">
+    <div class= "col-6 offset-1">
       <div class="card text-center content-card">
         <div class="card-body">
           <p>
@@ -55,7 +60,7 @@
       </div>
     </div>
 
-    <div class= "col-3">
+    <div class= "col-3 offset-2">
       <div class="card text-center host-card">
         <div class="card-body w-80">
           <p>
@@ -79,19 +84,33 @@
 
 <%# <% if @event.users.find_by(id: current_user.id).first_name == @event.host_name %> 
 <% if @event.host_id == current_user.id %>
-    <%= link_to 'Edit', edit_event_path(@event) %> |
-    <%= link_to 'Remove Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <div class="actions btn btn-info showbutton">
+    <%= link_to 'Edit', edit_event_path(@event) %>
+  </div> 
+  <div class="actions btn btn-warning showbutton">
+    <%= link_to 'Remove Event', @event, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <div class="actions btn btn-danger showbutton">
     <%= link_to 'Back', events_path %>
+  </div>
 <% else %>
+  <div class="actions btn btn-danger showbutton">
     <%= link_to 'Back', events_path %>
-<% end %>
+  </div>
+<% end %><br/><br/><br/>
 
-<br/><br/>
-
-<h3>Attendees:</h3>
-<ul>
+<div class= "attendees">
+  <h3>Attendees:</h3>
+  <div class= "row">
   <% @event.users.each do |u| %>
-    <li><%= u.first_name %> <%= u.last_name %></li>
-    <li><%= link_to 'Show', profile_user_path(current_user.id) %></li>
+      <div class= "col-2 offset-1"><br/>
+        <div class="card text-center profile-card">
+          <div class="card-body">
+            <%= u.first_name %> <%= u.last_name %>
+            <%= link_to 'profile', profile_user_path(u.id) %>
+          </div>
+        </div>
+      </div>
   <% end %>
-</ul>
+  </div>   
+</div>

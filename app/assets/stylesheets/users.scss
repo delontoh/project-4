@@ -64,7 +64,6 @@ h3 {
     clear: left;
     border-radius: 2px;
     border-color: white;
-    
     background-color: transparent;
 }
 
@@ -77,6 +76,10 @@ h3 {
 .host-card {
     background-color: white;
     text-align: center;
+}
+
+.profile-card {
+    background-color: rgba(177, 239, 228, 0.7);
 }
 
 .content-card {
@@ -98,4 +101,19 @@ h3 {
 .title-container > h2 {
     color: rgb(244, 102, 102);
     margin-top: 10px;
+}
+
+.join-button {
+    display: inline-block;
+    float: right;
+    clear: right;
+}
+
+.attendees > h3 {
+    color: rgb(244, 102, 102);
+}
+
+.date-time-container > row > col > p {
+    color: white;
+    font-weight: bold;
 }
