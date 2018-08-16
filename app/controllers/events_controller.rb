@@ -49,8 +49,7 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
-    
-    #redirect_to events_path
+   
   end
 
   # PATCH/PUT /events/1
