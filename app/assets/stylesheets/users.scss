@@ -7,9 +7,36 @@
     padding-right:28px;
 }
 
+.cloudimg {
+    width: 30px;
+    height: 30px;
+}
 
-h4 {
-    color: rgba(234, 84, 84, 1);
+h3 {
+    color: black;
+    font-weight: 850;
+}
+
+.img-container {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+    float: left;
+    clear: left;
+}
+
+.img-container img {
+    width: 100%;
+    height: auto;
+    border: 50%;
+}
+.skills {
+    color: white;
+    font-weight: bold;
+}
+
+.skilltable {
+    opacity: 0.8;
 }
 
 .lgout {
@@ -29,4 +56,46 @@ h4 {
     clear: left;
     width: 500px;
         
+}
+
+.card {
+    display: inline-block;
+    float: left;
+    clear: left;
+    border-radius: 2px;
+    border-color: white;
+    
+    background-color: transparent;
+}
+
+.card-text {
+    color: rgb(244, 102, 102);
+    font-weight: 800;
+    background-color: transparent;
+}
+
+.host-card {
+    background-color: white;
+    text-align: center;
+}
+
+.content-card {
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    color: rgb(244, 102, 102);
+}
+
+.card-title {
+    color: black;
+    font-weight: bold;
+}
+
+.content-container > p {
+    text-align: left;
+}
+
+.title-container > h2 {
+    color: rgb(244, 102, 102);
+    margin-top: 10px;
 }

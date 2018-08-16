@@ -1,59 +1,81 @@
 
-<% if @event.host_id != current_user.id %> 
+<div class= 'title-container'>
+  <h2>
+    <strong><%= @event.title %></strong>
+  </h2>
+  <% if @event.host_id != current_user.id %> 
 
-  <% if @event.users.find_by(id: current_user.id) != nil %>
-    <%= form_with url: leave_path(@event.id), method: :post do |f| %>
-      <%= f.submit "Leave Event" %>
-    <% end %>  
+    <% if @event.users.find_by(id: current_user.id) != nil %>
+      <%= form_with url: leave_path(@event.id), method: :post do |f| %>
+        <%= f.submit "Leave Event" %>
+      <% end %>  
+
+    <% else %>
+      <%= form_with url: join_path(@event.id), method: :post do |f| %>
+        <%= f.submit "Join Event" %>
+      <% end %> 
+    <% end %>
 
   <% else %>
-    <%= form_with url: join_path(@event.id), method: :post do |f| %>
-      <%= f.submit "Join Event" %>
-    <% end %> 
   <% end %>
+</div><br/>
 
-<% else %>
-<% end %>
+<div class= "date-time-container container-fluid">
+  <div class= 'row'>
+    <div class= "col">
+      <p>
+        <strong>Event Date:</strong>
+        <%= @event.date_start %>
+      </p>
+    </div>
+    <div class= "col">
+      <p>
+        <strong>Time from:</strong>
+        <%= @event.time_from %>
+      </p>
+    </div>
+    <div class= "col">
+      <p>
+        <strong>Time to:</strong>
+        <%= @event.time_to %>
+      </p>
+    </div>
+  </div>
+</div><br/>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class= "content-container container-fluid">
+  <div class= "row">
+    <div class= "col-9">
+      <div class="card text-center content-card">
+        <div class="card-body">
+          <p>
+            <%= @event.content %>
+          </p>
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Event Date:</strong>
-  <%= @event.date_start %>
-</p>
+    <div class= "col-3">
+      <div class="card text-center host-card">
+        <div class="card-body w-80">
+          <p>
+            <strong>Host name:</strong>
+            <%= @event.host_name %>
+          </p>
+          <p>
+            <strong>Host contact:</strong>
+            <%= @event.host_contact %>
+          </p>
+          <p>
+            <strong>Location:</strong>
+            <%= @event.location %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br/>
 
-<p>
-  <strong>Time from:</strong>
-  <%= @event.time_from %>
-</p>
-
-<p>
-  <strong>Time to:</strong>
-  <%= @event.time_to %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-
-<p>
-  <strong>Host name:</strong>
-  <%= @event.host_name %>
-</p>
-
-<p>
-  <strong>Host contact:</strong>
-  <%= @event.host_contact %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @event.content %>
-</p>
 
 <%# <% if @event.users.find_by(id: current_user.id).first_name == @event.host_name %> 
 <% if @event.host_id == current_user.id %>
