@@ -21,6 +21,9 @@ gem 'webpacker'
 # Use devise for Authentication
 gem 'devise'
 
+# User Geocoder
+gem 'geocoder', '~> 1.5'
+
 # User Bootstrap for styling
 gem 'bootstrap', '~> 4.1.3'
 
