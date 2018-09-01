@@ -27,22 +27,23 @@
 
 <div class= "date-time-container container-fluid">
   <div class= 'row'>
-    <div class= "col">
+    <div class= "col event-date-time">
       <p>
         <strong>Event Date:</strong>
-        <%= @event.date_start %>
+        <%= @event.date_start.strftime("%A") %>
+        <%= @event.date_start.strftime("%d-%b-%Y") %>
       </p>
     </div>
-    <div class= "col">
+    <div class= "col event-date-time">
       <p>
-        <strong>Time from:</strong>
-        <%= @event.time_from %>
+        <strong>From:</strong>
+        <%= @event.time_from.strftime("%H:%M %p") %>
       </p>
     </div>
-    <div class= "col">
+    <div class= "col event-date-time">
       <p>
-        <strong>Time to:</strong>
-        <%= @event.time_to %>
+        <strong>To:</strong>
+        <%= @event.time_to.strftime("%H:%M %p") %>
       </p>
     </div>
   </div>
@@ -60,8 +61,8 @@
       </div>
     </div>
 
-    <div class= "col-3 offset-2">
-      <div class="card text-center host-card">
+    <div class= "col-3 offset-1">
+      <div class="event-details card text-center host-card">
         <div class="card-body w-80">
           <p>
             <strong>Host name:</strong>
@@ -72,9 +73,12 @@
             <%= @event.host_contact %>
           </p>
           <p>
-            <strong>Location:</strong>
-            <%= @event.location %>
+            <strong>Address:</strong>
+            <%= @event.address %>
           </p>
+          <div class='map'>
+            <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@event.latitude},#{@event.longitude}&markers=#{@event.latitude},#{@event.longitude}&zoom=15&size=400x200&&key=AIzaSyBNEtdl8j7b-XMe4WP7YgTXEwx_0EpR7o4"%>
+          </div>
         </div>
       </div>
     </div>
@@ -107,7 +111,7 @@
         <div class="card text-center profile-card">
           <div class="card-body">
             <%= u.first_name %> <%= u.last_name %>
-            <%= link_to 'profile', profile_user_path(u.id) %>
+            <%= link_to 'Info', profile_user_path(u.id) %>
           </div>
         </div>
       </div>

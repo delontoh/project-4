@@ -57,9 +57,28 @@ th {
     color: rgba(234, 84, 84, 1);
 }
 
+td {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.table-date {
+    background: rgb(244, 102, 102);
+}
+
+.table-month {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.table-day {
+    font-size: 18px;
+}
+
 .eventdetail {
     text-decoration: none;
-    color: white;
+    color: rgb(19, 132, 150);
 }
 
 .newevent {
@@ -78,4 +97,33 @@ ul {
     text-decoration: none;
     color: white;
     font-weight: bold;
+}
+
+.map {
+    width: 400px;
+    height: 200px;
+}
+
+.event-details {
+    background: rgb(244, 102, 102);
+    border-color: white;
+    border-radius: 3px;
+    border-width: 4px;
+}
+
+.event-details .card-body {
+    color: white;
+}
+
+.event-date-time {
+    color: rgb(19, 132, 150);
+}
+
+.event-date-time strong{
+    color: rgb(244, 102, 102);
+}
+
+.attendees .card-body {
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
 }

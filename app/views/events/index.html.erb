@@ -7,10 +7,10 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Event Date</th>
-            <th scope="col">Title</th>
-            <th scope="col">Time from</th>
-            <th scope="col">Time to</th>
+            <th scope="col">Date</th>
+            <th scope="col">Event</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
           </tr>
         </thead>
 
@@ -18,10 +18,14 @@
           <% @events.each do |event| %>
             <tr>
               
-              <td><%= event.date_start %></td>
-              <td><%= event.title %></td>
-              <td><%= event.time_from %></td>
-              <td><%= event.time_to %></td>
+              <td class="table-date">
+                <p class="table-month"><%= event.date_start.strftime("%b") %></p>
+                <p class="table-day"><%= event.date_start.strftime("%d") %></p>
+              </td>
+
+              <td class= "table-title"><%= event.title %></td>
+              <td class= "table-time"><%= event.time_from.strftime("%H:%M %p") %></td>
+              <td class= "table-time"><%= event.time_to.strftime("%H:%M %p") %></td>
 
               <td><%= link_to 'More Details', event, class: 'eventdetail' %></td>
               <%# <td><%= link_to 'Edit', edit_event_path(event) %><%#</td> %>

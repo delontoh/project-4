@@ -23,21 +23,21 @@
   </div>
 
 
-   <div class="input-group mb-3">
+  <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"><%= form.label :date_start, 'Event Date' %></span>
       <%= form.date_select :date_start, class: "form-control" %>
     </div>
   </div>
 
-   <div class="input-group mb-3">
+  <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"><%= form.label :time_from %></span>
       <%= form.time_select :time_from, class: "form-control" %>
     </div>
   </div>
 
-   <div class="input-group mb-3">
+  <div class="input-group mb-3">
     <div class="input-group-prepend time-input">
       <span class="input-group-text" id="basic-addon1"><%= form.label :time_to %></span>
       <%= form.time_select :time_to , class: "form-control" %>
@@ -46,27 +46,36 @@
 
    <div class="input-group mb-3">
     <div class="input-group-prepend time-input">
-      <span class="input-group-text" id="basic-addon1"><%= form.label :location %></span>
-      <%= form.text_field :location, class: "form-control", placeholder: 'Enter Location', required: true %>
+      <span class="input-group-text" id="basic-addon1"><%= form.label :address %></span>
+      <%= form.text_field :address, class: "form-control", placeholder: 'Enter Address', required: true %>
     </div>
   </div>
 
-   <div class="field">
+  <div class="field">
+      <%= form.hidden_field :latitude, required: true %>
+  </div>
+
+  <div class="field">
+      <%= form.hidden_field :longitude, required: true %>
+  </div>
+
+
+  <div class="field">
       <%= form.hidden_field :host_id, :value => current_user.id, required: true %>
   </div>
 
-   <div class="field">
+  <div class="field">
       <%= form.hidden_field :host_name, :value => @user, required: true %>
   </div>
 
-   <div class="input-group mb-3">
+  <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"><%= form.label :host_contact %></span>
       <%= form.text_field :host_contact, class: "form-control", placeholder: 'Enter Contact Detail', required: true %>
     </div>
   </div>
 
-   <div class="input-group">
+  <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1"><%= form.label :content, "Event Info" %></span>
       <%= form.text_area :content, class: "form-control", required: true %>
